@@ -7,6 +7,19 @@ function Section(props) {
             <div className="content">
                 {props.children}
             </div>
+            <style jsx>{`
+                .container {
+                    display: flex;
+                    flex-direction: row;
+                }
+                
+                .content {
+                    display: flex;
+                    flex-direction: row;
+                    padding-top: 4em;
+                    flex-wrap: wrap;
+                }
+            `}</style>
         </section>
     )
 }

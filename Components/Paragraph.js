@@ -1,4 +1,4 @@
-function Paragraph() {
+function Paragraph(props) {
     return (
         <div className="paragraph">
             <p>
@@ -14,6 +14,13 @@ function Paragraph() {
                 occaecat cupidatat non proident, sunt 
                 in culpa qui officia deserunt mollit anim id est laborum.
             </p>
+            <style jsx>{`
+                .paragraph {
+                    width: 40em;
+                    font-size: 1.6em;
+                    font-family: ${props.font}
+                }
+            `}</style>
         </div>
     )
 }
