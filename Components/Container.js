@@ -20,11 +20,10 @@ class Container extends Component {
             ]
         }
 
-        this.changeFont = this.changeFont.bind(this)
         this.changeColor = this.changeColor.bind(this)
     }
 
-    changeFont() { 
+    changeFont = () => { 
         this.setState({
             font: this.state.font == 'serif' ? 
                 'sans-serif' : 
