@@ -15,54 +15,40 @@ class Container extends Component {
             color: [
                 'rgba(255,0,0,.3',
                 'rgba(255,0,0,.8)',
-                'red'
-                
+                'red'  
             ]
         }
 
         this.changeColor = this.changeColor.bind(this)
     }
 
-    changeFont = () => { 
+    changeFont = (event) => {    
         this.setState({
-            font: this.state.font == 'serif' ? 
-                'sans-serif' : 
-                'serif'
+            font: event.target[event.target.selectedIndex].value
         })
     }
 
     changeColor(e) {
-        
-        switch(e.target.value) {
-            case 'red':
-                this.setState({
-                    color: [
-                        'rgba(255,0,0,.3',
-                        'rgba(255,0,0,.8)',
-                        'red'
-                        
-                    ]
-                })
-            break;
-            case 'green':
-                this.setState({
-                    color: [
-                        'rgba(0,255,0,.3',
-                        'rgba(0,255,0,.8)',
-                        'green'
-                        
-                    ]
-                })
-            break;
-            default: 
-                this.setState({
-                    color: [
-                        'rgba(255,0,0,.3',
-                        'rgba(255,0,0,.8)',
-                        'red' 
-                    ]
-                })
+        console.log(e.target.value)
+        let col = []
+        for(let i=1; i < e.target.value.length; i+=2 ) {
+            let val1 = parseInt(e.target.value[i], 16)
+            let val2 = parseInt(e.target.value[i+1], 16)
+           
+
+            val1 = val1 * 16
+            col.push(val1 + val2)
         }
+
+        console.log(col)
+
+        this.setState({
+            color: [
+                `rgba(${col[0]}, ${col[1]}, ${col[2]},.3`,
+                `rgba(${col[0]}, ${col[1]}, ${col[2]},.8)`,
+                e.target.value 
+            ]
+        })
     }
 
     render() {

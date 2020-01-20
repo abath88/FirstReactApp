@@ -1,5 +1,12 @@
 import React from 'react'
 //https://github.com/abath88/FirstReactApp
+
+var obj = {
+    fonts: [
+        "Times New Roman", "Arial", "Calibri", "Comic Sans MS", "Impact"
+    ]
+}
+
 class Menu extends React.Component {
     constructor(props) {
         super(props)
@@ -23,17 +30,19 @@ class Menu extends React.Component {
             </div>
             <ul>
                 <li>
-                    <button onClick={this.props.changeFont}>
-                        Click ME
-                    </button>
+                    <select name="colors" onChange={this.props.changeFont}>
+                        {obj.fonts.map( font => 
+                            <option 
+                                style={{fontFamily: font}} 
+                                value={font}
+                            >
+                                {font}
+                            </option>
+                        )}   
+                    </select> 
                 </li>
                 <li>
-                    <select name="colors" onChange={this.props.changeColor}>
-                        <option value="red">red</option>
-                        <option value="green">green</option>
-                        <option value="blue">blue</option>
-                        <option value="pink">pink</option>
-                    </select> 
+                    <input type="color" onChange={this.props.changeColor}/>
                 </li>
             </ul>
             <style jsx>{`
